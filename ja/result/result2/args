@@ -1,9 +1,0 @@
-{
-    "batchsize": 128,
-    "epoch": 20,
-    "frequency": 1,
-    "resume": "",
-    "gpu": -1,
-    "out": "result/result2",
-    "unit": 50
-}
