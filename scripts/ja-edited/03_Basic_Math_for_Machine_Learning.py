@@ -11,7 +11,7 @@
 #     language: python
 #     name: python3
 # ---
-
+# wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 # + [markdown] colab_type="text" id="CE_CacxQ7q7t"
 # # 機械学習に使われる数学
 #
