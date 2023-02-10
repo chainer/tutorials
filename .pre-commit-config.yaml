@@ -1,6 +1,6 @@
 repos:
--   repo: https://github.com/mwouts/jupytext
-    rev: v1.14.0  # CURRENT_TAG/COMMIT_HASH
+-   repo: https://github.com/yuji96/jupytext
+    rev: v1.14.4.1
     hooks:
     - id: jupytext
-      args: [--sync]
+      args: [--from, ipynb, --to, py, --output-dir, scripts]
