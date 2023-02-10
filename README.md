@@ -9,7 +9,14 @@ PlayGround/データサイエンスコース で用いるための課題を改�
 [ライセンス日本語訳](LICENSE-ja)
 
 ## 環境
-wip
+とりあえず、各自使用するライブラリをインストールする運用です  
+### pre-commitのセットアップについて
+このリポジトリでは`pre-commit`を使うため、各自設定が必要です。  
+1. pre-commitのインストール   
+    `pip install pre-commit`  
+2. pre-commitの設定  
+    `pre-commit install`  
+これにより`.git/hooks/pre-commit`に`pre-commit`がインストールされ、以後`pre-commit`が実行されるようになります。  
 
 ## ディレクトリ構造
 - ja/
