@@ -1,0 +1,6 @@
+repos:
+-   repo: https://github.com/yuji96/jupytext
+    rev: v1.14.4.1
+    hooks:
+    - id: jupytext
+      args: [--from, ipynb, --to, py, --output-dir, scripts]
