@@ -39,9 +39,3 @@ wip
 pre-commitによってjupytextコマンドが実行され、
 `ja-edited/hoge.ipynb`の内容が`scripts/ja-edited/hoge.py`に反映されます。  
 **この際上記のファイルの両方がステージングされている必要があります。**
-
-### Make
-よく使うコマンドを[こちらのファイル]()にまとめることができます。
-- make sync  
-    `py`ファイルの内容を対応する`ipynb`ファイルに同期させます。
-
