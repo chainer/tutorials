@@ -94,9 +94,6 @@ a
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="oTHXMTjiv9aR" outputId="fc9f6804-a059-48f1-ae0a-45ca25eecc86"
 print(a)
 
-# + [markdown] colab_type="text" id="9yizNcBvv9aU"
-# 変数名だけをセルに記入して実行する場合と`print()`を利用する場合の違いについては、後述します。
-
 # + [markdown] colab_type="text" id="nGNlqHW_v9aV"
 # 変数につける名前は、コードを書く人が自由に決めることができます。
 # ただし、わかりやすい名前をつけることがとても大切です。
@@ -196,24 +193,6 @@ type(.5)
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="enBKbL9fIfEx" outputId="992db59f-1989-4d2d-db0d-241aa434cc83"
 print(.5)
 
-# + [markdown] colab_type="text" id="xIr4oyIav9a-"
-# ### 複数同時の代入
-#
-# Python では複数の変数に対する代入を一度に行うことができ、**複数同時の代入 (multiple assignment)** と呼びます。
-# 例えば、上記の `a = 1` と `b = 1.2` を同時に一行で記述すると以下のようになります。
-
-# + colab={} colab_type="code" id="GxERn_L6v9a-"
-a, b = 1, 1.2
-
-# + [markdown] colab_type="text" id="MrlNU5sQv9bA"
-# 3 つ以上の変数に対して、複数同時の代入を行うことも可能です。
-
-# + colab={} colab_type="code" id="pzzK0Ocfv9bB"
-a, b, c = 1, 1.2, 'Chainer'
-
-# + [markdown] colab_type="text" id="oJCqJg0jv9bD"
-# 複数同時の代入は後の章で頻出するため、覚えておきましょう。
-
 # + [markdown] colab_type="text" id="VsdsnV9uiQev"
 # ### 算術演算子
 #
@@ -291,8 +270,6 @@ a + b
 # 計算結果として実数を返す除算のことを特に、**真の除算 (true division)** と言います。
 # 一方、商（整数部分）を返すような除算演算子として、 `//` 記号が用意されています。 `/` 記号を 2 回、間を空けずに繰り返します。計算結果として商を返す除算のことを、 **切り捨て除算 (floor division)** と呼びます。
 # 商を計算したい場合に便利な演算子であるため、こちらも覚えておきましょう。
-#
-# ※ Python 2 では、除数も被除数も整数であった場合、 `/` 記号を用いても切り捨て除算が行われるので注意してください。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="PFwX_4_pBbY0" outputId="260dd494-deb0-49c6-edb6-19d1662137e7"
 # 整数と整数で切り捨て除算 -> 結果は整数
@@ -315,6 +292,9 @@ a + c
 # > TypeError: unsupported operand type(s) for +: 'int' and 'str'
 #
 # と言われています。「+ にとって int と str はサポートされていない被作用子（+ が作用する対象のこと。operand）です」と書かれています。「int に str を足す」ということはできないというわけです。
+#
+# このようにエラーメッセージからは自分のミスに関する情報を得ることができます。
+# 何を間違えたかはエラーをもとに調べれば大抵わかりますから、まずはエラーについて調べることを心がけましょう。
 #
 # `int` もしくは `float` と、 `str` の間の加算、減算、除算では上記のエラーが生じます。
 # ただし、`str` と `int` の**乗算**は特別にサポートされており、計算を実行することができます。
@@ -443,101 +423,6 @@ type(1 < 2)
 # + [markdown] colab_type="text" id="aBzVaMJ1IfF7"
 # 等しいかどうかを判定する比較演算子 `==` を使う際は、代入演算子 `=` と間違えないように気をつけてください。
 
-# + [markdown] colab_type="text" id="Wr7NohtiCUN_"
-# ## エスケープシーケンス
-#
-# 通常の文字列では表せない特殊な文字を、規定された特別な文字の並びにより表したものを**エスケープシーケンス (escape sequence)** と呼びます。 
-#
-# よく使用するものとして、**改行**を意味する `\n`（もしくは `¥n`）、**タブ**を意味する `\t`（もしくは `¥t`）があります。
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 53} colab_type="code" id="m3CBKEsrC4L-" outputId="a3f2481b-b0d5-4b2b-f9b8-e30d9ad65422"
-print('Hello\nWorld')
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="FosQ7-tzC_45" outputId="c1e2bf56-0067-4983-fc0b-359561451085"
-print('Hello\tWorld')
-
-# + [markdown] colab_type="text" id="2_FlL8P5v9cI"
-# 最初に Jupyter Notebook 上で変数の値を確認する際に、`print()` を使う場合と使わない場合の違いについて触れましたが、エスケープシーケンスを評価したい場合には、`print()` を使う必要があります。
-
-# + colab={} colab_type="code" id="cTxeZsrPv9cJ"
-d = 'Hello\nWorld'
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="ZgVfZOKRv9cL" outputId="e0a850a4-2094-405c-877a-1a54ae61022f"
-# エスケープシーケンスが評価されない
-d
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 53} colab_type="code" id="2DcxLEa1v9cM" outputId="7da2adaf-417a-4d22-fda2-b61c5f72f05a"
-# エスケープシーケンスが評価される
-print(d)
-
-# + [markdown] colab_type="text" id="Udw0u53Lv9cO"
-# ## 文字列メソッド
-#
-# `str` 型の変数には、いくつか便利な機能がついています。
-# 例えば、その変数が持つ全ての文字を小文字や大文字に変換する `lower()` や `upper()` といった機能があります。
-# このような型が持っている関数を**メソッド (method)** と呼びます。
-#
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="tDhIrHvev9cP" outputId="0209e82b-f9fd-4868-b6c8-fc2b9e414d3f"
-name = 'Chainer'
-
-name
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="pUb1lrhzv9cQ" outputId="56044dec-afe5-4577-e8b9-db46b16c8617"
-# すべてを小文字に変換
-name.lower()
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="Ma-TiLUsv9cS" outputId="0e35604e-7314-442c-ebab-6d6bf4a296ec"
-# すべてを大文字に変換
-name.upper()
-
-# + [markdown] colab_type="text" id="qvpJWVYkv9cT"
-# よく使う文字列メソッドの一つに、 `format()` があります。
-# これは、ある文字列の一部分に、あとから別な文字列を埋め込むために使用します。
-# 対象の文字列には `{}` で予め値を埋め込みたい場所を指定しておきます。
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="UBDe56zvv9cT" outputId="e3324141-b48b-4668-841d-442abe5a6ffc"
-name = 'Chainer'
-
-'{} チュートリアルへようこそ'.format(name)
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="mN4n4NYMv9cV" outputId="64f48915-fb3b-49f1-f00d-0dd55cf302b9"
-name1 = 'Chainer'
-name2 = 'チュートリアル'
-
-'{} {}へようこそ'.format(name1, name2)
-
-# + [markdown] colab_type="text" id="G_LHyH7Uv9cW"
-# `format()` メソッドを用いると `int` 型 や `float` 型の変数を、`str` 型へ明示的にキャストすることなく文字列に埋め込むことができます。
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="hnNv40_Pv9cX" outputId="0d06d60c-4a0b-4af3-a660-ff7ebbe3dad2"
-version = 3.7
-
-'Python {}'.format(version)
-
-# + [markdown] colab_type="text" id="Pm4cvrnQv9cY"
-# ## 浮動小数点数がもつメソッド
-#
-# 「メソッド」は `str` 型の変数だけが持つものではありません。
-# `int` 型の変数や、`float` 型の変数にも、その型の特徴に合わせた機能が、メソッドとして提供されています。
-#
-# 例えば、`float` 型の変数には、`as_integer_ratio()` というメソッドがあり、比がその浮動小数点数の値となるような整数の組を返します。
-#
-# 例えば、0.5 という値は、分数で表すと $\frac{1}{2}$ です。
-# これは、以下のようにして調べることができます。
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="pFPtOpz-v9cY" outputId="0b615cbf-b97a-413e-edcb-8116b0dcbe90"
-0.5.as_integer_ratio()
-
-# + [markdown] colab_type="text" id="EZNdyQZLv9cZ"
-# 0.25 であれば、$\frac{1}{4}$ となります。
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="OuwnCcupv9cZ" outputId="c987b2ef-bec9-4e0b-ab90-27bffc0e88a0"
-0.25.as_integer_ratio()
-
-# + [markdown] colab_type="text" id="P1-Ak83pv9ca"
-# このような、型に紐付いたメソッドなどについては、この章の最後にある「クラス」という概念の説明の際にもう少し詳しく解説します。
-
 # + [markdown] colab_type="text" id="VsBRE0Wyv9ca"
 # ## 複合データ型
 #
@@ -638,21 +523,29 @@ numbers[:2]
 numbers[1:]
 
 # + [markdown] colab_type="text" id="RRlf3vqOv9cq"
-# この場合は、取り出される要素の個数は `len(numbers) - 1` 個となることに注意してください。
-#
+# この場合は、取り出される要素の個数は `len(numbers) - 1` 個となることに注意してください。  
 # 以上から、`numbers[:2]` と `numbers[2:]` は、ちょうど 2 個目の要素を境に `numbers` の要素を 2 分割した前半部分と後半部分になっています。
 # ここで、インデックスが 2 の要素自体は**後半部に含まれる**ということに注意してください。
-#
 # また、開始位置も終了位置も省略した場合は、すべての要素が選択されます。
+#
+# 一見ややこしい挙動のようですが、ここで下画像のようにインデックスは要素の間にふられているとすると理解しやすくなります。  
+# 例えば `numbers[:2]` は「2の位置"まで"」だから2個目の要素は含まないというわけです。  
+# ![indexのイメージ](./images/02/02_indexing.jpg)
+#
+# ちなみにこれは[Pythonの公式ドキュメント](https://docs.python.org/ja/3/tutorial/introduction.html#strings)で紹介されている覚え方です。
+# -
+
+# 全ての要素を選択する場合、下記のように書くこともできます。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="nav8WoxNv9cq" outputId="b35c3b9d-f123-42a4-9d5b-505a31be278e"
 numbers[:]
 
 # + [markdown] colab_type="text" id="9qPrP6sYv9cs"
-# 現状では、`numbers[:]` と `numbers` の結果が同じであるため、どのように使用するか疑問に思われるかも知れません。
-# しかし、後の章では NumPy というライブラリを用いてリストの中にリストが入ったような**多次元配列 (multidimensional array)** を扱っていきます。
-# そして多次元配列を用いて行列を表す場合には、`0 列目のすべての値`を抽出するために `[:, 0]` のような記法を用いるケースが登場します。
+# 現状では、`numbers[:]` と `numbers` の結果が同じであるため、どのように使用するか疑問に思われるかも知れません。  
+# しかし、後の章では NumPy というライブラリを用いてリストの中にリストが入ったような**多次元配列 (multidimensional array)** を扱っていきます。  
+# そして多次元配列を用いて行列を表す場合には、`0 列目のすべての値`を抽出するために `[:, 0]` のような記法を用いるケースが登場します。  
 # これは Python 標準の機能ではありませんが、Python 標準のスライス表記を拡張したものになっています。
+#
 
 # + [markdown] colab_type="text" id="AyoiOU5OFfET"
 # リストは数値以外に、文字列を扱うこともでき、また複数の型を同一のリスト内に混在させることもできます。
@@ -719,7 +612,7 @@ array
 type(array)
 
 # + [markdown] colab_type="text" id="9w2M0A02v9c3"
-# タプルの定義する際に `( )` を使用したため、要素へのアクセスも `( )` を使うように感じるかもしれませんが、実際にはリストと同様 `[ ]` を使用します。
+# タプルの定義する際に `( )` を使用したため、要素へのアクセスも `( )` を使うように感じるかもしれませんが、実際にはリストと同様 `[ ]` を使用します。  
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="Fq7zIHMfNIXG" outputId="8cc0dcde-bfc6-4d74-cb73-6a716394bb98"
 # 先頭の要素へアクセス
@@ -758,6 +651,10 @@ array[0] = 10
 # リストやタプルでは、各要素にアクセスする際に整数のインデックスを用いていましたが、辞書ではキーでインデックス化されているため、整数や文字列など、色々なものを使って要素を指定することができます。
 #
 # 辞書は `{}` を用いて定義し、要素にアクセスする際には、リストやタプルと同様に `[ ]` を使用し、`[ ]` の中にキーを指定して対応する値を取り出します。
+# -
+
+# `[ ]` による要素へのアクセスは複数の要素を持つ型において一般的な記法なのがわかると思います。  
+# 要素のどれにアクセスするのかを、リストやタプルではインデックスで、辞書ではキーで指定するわけです。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="NyxphI5fNMO8" outputId="c4d9a198-171f-4c0e-ec96-de8cdc161c0d"
 # 辞書を定義
@@ -878,20 +775,13 @@ for i in range(5):
     i
 
 # + [markdown] colab_type="text" id="tEczQdb9v9dM"
-# for 文を使って、0 から始まって 1 ずつ大きくなっていく整数順番に取得し、これをリストのインデックスに利用すれば、リストの各要素に順番にアクセスすることができます。
+# for 文を使って、0 から始まって 1 ずつ大きくなっていく整数順に取得し、これをリストのインデックスに利用すれば、リストの各要素に順番にアクセスすることができます。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 70} colab_type="code" id="b6XXuQ_gOnxk" outputId="ad85251e-4bcf-4b1f-c9d0-0aead91f025e"
 names = ['佐藤', '鈴木', '高橋']
 
 for i in range(3):
     print(names[i])
-
-# + [markdown] colab_type="text" id="ci6hVBb-v9dN"
-# 少し応用して、自動的に敬称をつけて表示してみましょう。
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 70} colab_type="code" id="B24Fyoe9v9dN" outputId="2157b8d3-b75a-4f19-c7c4-46c4a18bf4fa"
-for i in range(3):
-    print('{}さん'.format(names[i]))
 
 # + [markdown] colab_type="text" id="msGhS1ISv9dN"
 # つぎに、さらに汎用性の高いプログラムを目指します。
