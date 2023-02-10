@@ -5,15 +5,16 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.14.0
+#       jupytext_version: 1.14.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
 #     name: python3
 # ---
 
+# wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
 # + [markdown] colab_type="text" id="CE_CacxQ7q7t"
-# # 機械学習に使われる数学
+# # 機械学習に使われる数学wwwwwwwwwwww
 #
 # 次章より 3 つの章にわたって、ディープラーニングを含む機械学習に必要な数学のうち、基礎的なものとして「微分」「線形代数」「確率統計」の 3 つについて、要点を絞り、簡潔に紹介していきます。
 #
