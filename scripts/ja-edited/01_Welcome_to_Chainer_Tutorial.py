@@ -119,8 +119,8 @@
 # ### コードセル
 #
 # コードセルは、Python のコードを書き込み、実行することができるセルです。
-# 実行するには、コードセルを選択した状態で、`Ctrl + Enter` または `Shift + Enter` を押します。
-# 試しに、下のセルを選択して、`Ctrl + Enter` を押してみてください。
+# 実行するには、コードセルを選択した状態で、`Shift + Enter` を押します。
+# 試しに、下のセルを選択して、`Shift + Enter` を押してみてください。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="EaOJalpbBlpr" outputId="40291477-aa22-4151-da78-d2ae6d2eb627"
 print('Hello world!')
@@ -154,29 +154,20 @@ print('Hello world!')
 # + colab={} colab_type="code" id="TI3-V_gN3Ekr"
 from google.colab import drive
 drive.mount('/content/drive')
+# -
 
-# + [markdown] colab_type="text" id="zllU5vanBlp2"
-# このノートブックを Colab で開いてから初めて上のコードセルを実行した場合は、以下のようなメッセージが表示されます。
+# このノートブックを Colab で開いて、上のコードセルを実行すると、以下のようなメッセージが表示されます。
 #
-# ![please authorize](images/01/01_05.png)
+# <img src="images/01/01_drive_1.png" width="800">
 #
-# 指示に従って表示されているURLへアクセスしてください。
-# すると、「アカウントの選択」と書かれたページに飛び、すでにログイン済みの場合はログイン中の Google アカウントのアイコンやメールアドレスが表示されています。
-# 利用したいアカウントをクリックして、次に進んで下さい。
-# すると次に、`Google Drive File Stream が Google アカウントへのアクセスをリクエストしています` と書かれたページに飛びます。
+# 「Google ドライブに接続」をクリックすると下図のウィンドウが表示されるので、どのアカウントの Google ドライブに接続するかを選択してください。
 #
-# ![access request](images/01/01_06.png)
+# <img src="images/01/01_drive_2.png" width="600">
 #
-# 右下に「許可」と書かれたボタンが見えます。
-# こちらをクリックしてください。
-# すると以下のように認証コードが記載されたページへ移動します。
+# アカウントを選択すると、下図のウィンドウが表示されます。このウィンドウ下部の「許可」ボタンをクリックすることで
+# Colab が Google ドライブにアクセスすることができるようになります。
 #
-# ![access code](images/01/01_07.png)
-#
-# （この画像では認証コード部分をぼかしています）
-# このコードを選択してコピーするか、右側にあるアイコンをクリックしてコピーしてください。
-#
-# 元のノートブックへ戻り、`Enter your authorization code:` というメッセージの下にある空欄に、先程コピーした認証コードを貼り付けて、Enter キーを押してください。
+# <img src="images/01/01_drive_3.png" width="600">
 #
 # **Mounted at /content/drive** と表示されたら、準備は完了です。
 #
@@ -187,8 +178,27 @@ drive.mount('/content/drive')
 # !ls 'drive/'
 
 # + [markdown] colab_type="text" id="DbvFPwpova8M"
-# 上のセルで実行しているのは Python のコードではありません。
-# Jupyter Notebook では、コードセル中で `!` が先頭に付いている行は特別に解釈されます。`!ls` は、次に続くディレクトリの中にあるファイルまたはディレクトリの一覧を表示せよ、という意味です（[注釈1](#note1)）。
+# 上のセルで実行しているのは Python のプログラムではなく、シェルコマンドの一つです。
+# Jupyter Notebook では、コードセル中で `!` が先頭に付いている行はシェルコマンドとして解釈されます。`!ls` は、次に続くディレクトリの中にあるファイルまたはディレクトリの一覧を表示せよ、という命令（コマンド）です。
+
+# + [markdown] colab_type="text" id="44vOyaBKEk3m"
+# ###  GPU を使用する
+#
+# GPU とは単純な多くの計算を同時に処理するハードウェアです。
+# 大規模なデータを分析したり深層学習モデルを学習したりする際は、GPU を使用することでプログラムの実行速度を高速化できます。
+#
+# Colab では GPU を無料で使用することができます。
+# 初期設定では GPU を使用しない設定となっているため、GPU を使用する場合は設定を変更する必要があります。
+#
+# GPU を使用する場合は、画面上部のタブの中の 「Runtime」 (または「ランタイム」) をクリックし、「Change runtime type」 (または「ランタイムのタイプを変更」)を選択します。  
+#
+# そして、下記の画像の様に 「Hardware accelerator」  (または「ハードウェアアクセラレータ」)を GPU に変更します。  
+#
+# ![GPUの設定](images/01/01_08.png)
+#
+# これで Colab 上で GPU を使用できるようになりました。
+#
+#
 
 # + [markdown] colab_type="text" id="jZNTuBQ54BSu"
 # ### Colab の便利なショートカット
@@ -213,32 +223,5 @@ drive.mount('/content/drive')
 # コメントアウトとは、コード中で実行時に無視したい行やコメントを選択した状態で行う操作です。
 # Python では、`#` の後に続く文字列は全て、コメントとして無視され、実行時に評価されることはありません。
 
-# + [markdown] colab_type="text" id="44vOyaBKEk3m"
-# ###  GPU を使用する
-#
-# Colab では GPU を無料で使用することができます。
-# 初期設定では GPU を使用しない設定となっているため、GPU を使用する場合は設定を変更する必要があります。
-#
-# GPU を使用する場合は、画面上部のタブの中の 「Runtime」 (または「ランタイム」) をクリックし、「Change runtime type」 (または「ランタイムのタイプを変更」)を選択します。  
-#
-# そして、下記の画像の様に 「Hardware accelerator」  (または「ハードウェアアクセラレータ」)を GPU に変更します。  
-#
-# ![GPUの設定](images/01/01_08.png)
-#
-# これで Colab 上で GPU を使用できるようになりました。
-#
-#
-
 # + [markdown] colab_type="text" id="QoQHVO6rva8O"
 # これで、チュートリアルの本編に入っていく準備が完了しました。次の章では、Python というプログラミング言語の基本について解説します。
-
-# + [markdown] colab_type="text" id="rot1jrxLy47Y"
-# <hr />
-# <div class="alert alert-info">
-# **注釈 1**
-#
-# `ls` はシェルコマンドの 1 つです。
-#  
-# [▲上へ戻る](#ref_note1)
-# </div>
-#
